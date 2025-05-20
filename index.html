@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Traductor Español → Quechua</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; max-width: 600px; margin: auto; }
+    textarea, button { width: 100%; margin-top: 10px; }
+    #output { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Traductor Español → Quechua</h1>
+  <textarea id="inputText" placeholder="Escribe una frase en español..."></textarea>
+  <button onclick="translate()">Traducir</button>
+  <div id="output">Traducción aparecerá aquí...</div>
+
+  <script>
+    async function translate() {
+      const input = document.getElementById("inputText").value;
+      const output = document.getElementById("output");
+      output.textContent = "Traduciendo...";
+
+      const response = await fetch("https://api-inference.huggingface.co/models/somosnlp-hackathon-2022/t5-small-finetuned-spanish-to-quechua", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer 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",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ inputs: input })
+      });
+
+      const result = await response.json();
+
+      if (result.error) {
+        output.textContent = "Error: " + result.error;
+      } else {
+        output.textContent = result[0]?.generated_text || "Sin resultado.";
+      }
+    }
+  </script>
+</body>
+</html>
+<!-- Este es un comentario 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-->
