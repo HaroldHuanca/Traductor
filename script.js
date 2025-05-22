@@ -1,5 +1,5 @@
 // Configuración de la API (¡NO expongas tu token en GitHub Pages!)
-const API_URL = "https://api-inference.huggingface.co/models/Harolin/TraductoTransformer";
+const API_URL = "https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es";
 const API_TOKEN = "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"; // ¡Reemplaza con tu token!
 
 async function traducirTexto() {
