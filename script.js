@@ -1,6 +1,6 @@
 // Configuración de la API (¡NO expongas tu token en GitHub Pages!)
 const API_URL = "https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es";
-const API_TOKEN = "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"; // ¡Reemplaza con tu token!
+const API_TOKEN = "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"; // ¡Reemplaza con tu token!
 
 async function traducirTexto() {
     const textoIngles = document.getElementById("textoIngles").value;
